@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">lista1</string>
+    <string-array name="spinnerPMU">
+        <item>0</item>
+        <item>0.25</item>
+        <item>0.50</item>
+        <item>0.75</item>
+        <item>1</item>
+    </string-array>
+</resources>
