@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Button jbtnCalc;
     Button jbtnLimpar;
     TextView jtxtResult;
+    Button jbtnTelaMedia;
+    Button jbtnTelaSalario;
     ArrayAdapter<CharSequence> adapter;
 
     double prova,projeto,lista,pmu,result;
@@ -26,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         principio();
-        rotinas();
     }
 
-    private void rotinas(){
+    private void rotinas_media(){
         jbtnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,18 +72,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void principio(){
+        setContentView(R.layout.principal);
+        jbtnTelaMedia= findViewById(R.id.btnTelaMedia);
+        jbtnTelaSalario= findViewById(R.id.btnTelaSalario);
+        jbtnTelaMedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tela_media();
+            }
+        });
+        jbtnTelaSalario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tela_salario();
+            }
+        });
+    }
+
+    private void tela_media(){
         setContentView(R.layout.activity_main);
-        jspinnerPMU=(Spinner) findViewById(R.id.spinnerPMU);
+        jspinnerPMU= findViewById(R.id.spinnerPMU);
         adapter= ArrayAdapter.createFromResource(this,R.array.spinnerPMU,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         jspinnerPMU.setAdapter(adapter);
-        jedtListas=(EditText) findViewById(R.id.edtListas);
-        jedtProjeto=(EditText) findViewById(R.id.edtProjeto);
-        jedtProva=(EditText) findViewById(R.id.edtProva);
-        jbtnCalc=(Button)findViewById(R.id.btnCalc);
-        jbtnLimpar=(Button)findViewById(R.id.btnLimpar);
-        jtxtResult=(TextView)findViewById(R.id.txtResult);
+        jedtListas= findViewById(R.id.edtListas);
+        jedtProjeto= findViewById(R.id.edtProjeto);
+        jedtProva= findViewById(R.id.edtProva);
+        jbtnCalc= findViewById(R.id.btnCalc);
+        jbtnLimpar= findViewById(R.id.btnLimpar);
+        jtxtResult= findViewById(R.id.txtResult);
 
+        rotinas_media();
+    }
 
+    private void tela_salario(){
+        //aqui inicializar a tela activity_salario.
+        //depois inicializar os elementos no JAVA
+        //depois invocar as rotinas de listener dos elementos desta tela;
     }
 }
