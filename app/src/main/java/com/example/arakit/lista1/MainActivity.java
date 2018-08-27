@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    //tela_media
     Spinner jspinnerPMU;
     EditText jedtProva;
     EditText jedtProjeto;
@@ -24,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
     double prova,projeto,lista,pmu,result;
     int flag=0;
+    //fim_tela_media
+
+    //tela_salario
+    EditText jedtVlHora,jedtQuantHoras;
+    Spinner jspinnerINSS;
+    TextView jtxtBruto,jtxtINSS,jtxtLiquido;
+    Button jbtnCalcular;
+    ArrayAdapter<CharSequence> adaptador_INSS;
+    //Fim_tela_salario
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +119,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void tela_salario(){
         //aqui inicializar a tela activity_salario.
+        setContentView(R.layout.activity_salario);
         //depois inicializar os elementos no JAVA
+        jedtVlHora= findViewById(R.id.edtVlHora);
+        jedtQuantHoras= findViewById(R.id.edtQuantHoras);
+        jspinnerINSS= findViewById(R.id.spinnerINSS);
+        adaptador_INSS=ArrayAdapter.createFromResource(this,R.array.spinerINSS,android.R.layout.simple_spinner_item);
+        adaptador_INSS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        jspinnerINSS.setAdapter(adaptador_INSS);
+        jtxtBruto= findViewById(R.id.txtBruto);
+        jtxtINSS= findViewById(R.id.txtINSS);
+        jtxtLiquido= findViewById(R.id.txtLiquido);
+        jbtnCalcular= findViewById(R.id.btnCalcular);
         //depois invocar as rotinas de listener dos elementos desta tela;
+
+        //variaveis
+        double inss,vlhora,quanthoras,bruto,liquido;
+        jbtnCalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

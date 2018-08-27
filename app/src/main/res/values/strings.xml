@@ -7,4 +7,10 @@
         <item>0.75</item>
         <item>1</item>
     </string-array>
+
+    <string-array name="spinerINSS">
+        <item>PF</item>
+        <item>PJ</item>
+        <item>CLT</item>
+    </string-array>
 </resources>
