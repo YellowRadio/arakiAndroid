@@ -19,21 +19,25 @@ public class MainActivity extends AppCompatActivity {
     EditText jedtListas;
     Button jbtnCalc;
     Button jbtnLimpar;
+    Button jbtnVoltarMed;
     TextView jtxtResult;
+    ArrayAdapter<CharSequence> adapter;
+    //fim_tela_media
+
+    //tela principal
     Button jbtnTelaMedia;
     Button jbtnTelaSalario;
-    ArrayAdapter<CharSequence> adapter;
+    //tela principal end;
 
-    double prova,projeto,lista,pmu,result;
-    int flag=0;
-    //fim_tela_media
+
 
     //tela_salario
     EditText jedtVlHora,jedtQuantHoras;
     Spinner jspinnerINSS;
     TextView jtxtBruto,jtxtINSS,jtxtLiquido;
-    Button jbtnCalcular;
+    Button jbtnCalcular,jbtnLimparSal,jbtnVoltarSal;
     ArrayAdapter<CharSequence> adaptador_INSS;
+
     //Fim_tela_salario
 
     @Override
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         jbtnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                double prova,projeto,lista,pmu,result;
+                int flag=0;
                 prova=Double.valueOf(jedtProva.getText().toString());
                 projeto=Double.valueOf(jedtProjeto.getText().toString());
                 lista=Double.valueOf(jedtListas.getText().toString());
@@ -75,10 +81,18 @@ public class MainActivity extends AppCompatActivity {
         jbtnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jedtProva.setText("");
+                /*jedtProva.setText("");
                 jedtListas.setText("");
                 jtxtResult.setText("");
-                jedtProjeto.setText("");
+                jedtProjeto.setText("");*/
+                tela_media();
+            }
+        });
+
+        jbtnVoltarMed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                principio();
             }
         });
     }
@@ -113,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         jbtnCalc= findViewById(R.id.btnCalc);
         jbtnLimpar= findViewById(R.id.btnLimpar);
         jtxtResult= findViewById(R.id.txtResult);
-
+        jbtnVoltarMed=findViewById(R.id.btnVoltarMed);
         rotinas_media();
     }
 
@@ -131,14 +145,57 @@ public class MainActivity extends AppCompatActivity {
         jtxtINSS= findViewById(R.id.txtINSS);
         jtxtLiquido= findViewById(R.id.txtLiquido);
         jbtnCalcular= findViewById(R.id.btnCalcular);
+        jbtnLimparSal=findViewById(R.id.btnLimparSal);
+        jbtnVoltarSal=findViewById(R.id.btnVoltarSal);
         //depois invocar as rotinas de listener dos elementos desta tela;
 
-        //variaveis
-        double inss,vlhora,quanthoras,bruto,liquido;
+
+
         jbtnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //variaveis
+                double inss,vlhora,quanthoras,bruto,liquido;
 
+
+                vlhora=Double.parseDouble(jedtVlHora.getText().toString());
+                quanthoras=Double.parseDouble(jedtQuantHoras.getText().toString());
+                //System.out.println(jspinnerINSS.getSelectedItem().toString());
+                switch(jspinnerINSS.getSelectedItem().toString()){
+                    case "PF":
+                            inss=0.02;
+                            break;
+                    case "PJ":
+                            inss=0.05;
+                            break;
+                    case "CLT":
+                            inss=0.06;
+                            break;
+                            default:
+                                inss=0;
+                }
+
+                bruto=vlhora*quanthoras;
+                jtxtINSS.setText(String.valueOf(bruto*inss));
+                jtxtBruto.setText(String.valueOf(bruto));
+                liquido=bruto-(bruto*inss);
+                jtxtLiquido.setText(String.valueOf(liquido));
+
+
+            }
+        });
+
+        jbtnLimparSal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tela_salario();
+            }
+        });
+
+        jbtnVoltarSal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                principio();
             }
         });
     }

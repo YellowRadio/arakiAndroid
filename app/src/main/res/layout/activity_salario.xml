@@ -49,4 +49,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calcular" />
+
+    <Button
+        android:id="@+id/btnLimparSal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Limpar" />
+
+    <Button
+        android:id="@+id/btnVoltarSal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar" />
 </LinearLayout>
